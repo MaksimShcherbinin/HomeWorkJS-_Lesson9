@@ -70,6 +70,15 @@
         2) поставить данному элементу стиль visibility в значение 'visible'.
         */
 
+        const buttonEl = document.querySelector('.messageBtn');
+        const divEl = document.querySelector('.message');
+
+        buttonEl.addEventListener('click', function (e) {
+            divEl.classList.add('animate_animated');
+            divEl.classList.add('animate_fadeInLeftBig');
+            divEl.style.visibility = 'visible';
+        });
+
         /*
         3. Необходимо при отправке формы проверить, заполнены ли все поля в этой
         форме. Если какое-либо поле не заполнено, форма не должна отправляться, также
