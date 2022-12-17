@@ -56,6 +56,13 @@
         также должен меняться.
         */
 
+        const inputEl = document.querySelector('#from');
+        const spanEl = document.querySelector('span');
+
+        inputEl.addEventListener('input', function (e) {
+            spanEl.textContent = e.target.value;
+        });
+
         /*
         2. При клике на кнопку с классом messageBtn необходимо элементу с классом
         message:
