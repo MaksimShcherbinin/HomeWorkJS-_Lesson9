@@ -95,8 +95,7 @@
         formEl.querySelector('button').setAttribute('type', 'submit');
         const styleEl = document.createElement('style');
         styleEl.textContent = '.error {border: 2px solid red; box-sizing: border-box;}';
-        const head = document.querySelector('head');
-        head.appendChild(styleEl);
+        document.querySelector('head').appendChild(styleEl);
 
         [...formEl].filter(item => [...item.classList].some(i => i === 'form-control')).forEach(element => {
             element.addEventListener('focusout', function (e) {
