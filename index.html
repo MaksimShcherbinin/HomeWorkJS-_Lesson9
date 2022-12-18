@@ -92,33 +92,26 @@
         */
 
         const formEl = document.querySelector('form');
-        const input2El = formEl.querySelector('input.form-control');
-        const selectEl = formEl.querySelector('select.form-control');
-        const button2El = formEl.querySelector('button');
-        button2El.setAttribute('type', 'submit');
+        formEl.querySelector('button').setAttribute('type', 'submit');
         const styleEl = document.createElement('style');
         styleEl.textContent = '.error {border: 2px solid red; box-sizing: border-box;}';
         const head = document.querySelector('head');
         head.appendChild(styleEl);
 
-        formEl.addEventListener('submit', function (e) {
-            if (input2El.value === '') {
-                e.preventDefault();
-                input2El.classList.add('error');
-            } else {
-                input2El.classList.remove('error');
-            }
-            if (selectEl.value === '') {
-                e.preventDefault();
-                selectEl.classList.add('error');
-            } else {
-                selectEl.classList.remove('error');
-            };
-        });
+        [...formEl].filter(item => [...item.classList].some(i => i === 'form-control')).forEach(element => {
+            element.addEventListener('focusout', function (e) {
+                (element.value === '') ? element.classList.add('error') : element.classList.remove('error');
+            }, true);
 
-        formEl.addEventListener('focusout', function (e) {
-            (e.target.value === '') ? e.target.classList.add('error') : e.target.classList.remove('error');
-        }, true);
+            formEl.addEventListener('submit', function (e) {
+                if (element.value === '') {
+                    e.preventDefault();
+                    element.classList.add('error');
+                } else {
+                    element.classList.remove('error');
+                }
+            });
+        });
 
     </script>
 </body>
